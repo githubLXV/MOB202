@@ -1,0 +1,246 @@
+B2-SU2021
+Link lab
+https://drive.google.com/drive/u/0/folders/1Tdxt1MiQLkYntPMrL65itJPs-jmem1UJ
+
+-------
+https://meet.google.com/bpr-aafg-faj
+-----
+https://meet.google.com/qbk-phha-zjd
+--------
+Thiết kế giao diện android
+Một số qui định:
+Chú ý: 2 lần hand in
+	Lần 1: nộp file zip
+	Lần 2: nộp file video (chỉ quay kết quả)
+--------
+Buổi 1.3.5...15: Lý thuyết 1..8
+Buổi 2,4,6,..16: Thực hành 1...8 (nộp trên classroom, hạn nộp now + 24h)
+Buổi 17: Làm đề thi thử
+----
+LT1: Các loại layout
+1.Các control cơ bản: TextView, EditText, button....(widget)
+2.Các layout: LinearLayout, ContraintLayout, RelativeLayout....
+	LinearLayout: bố trí layout theo dạng hàng, cột
+	RelativeLayout: bố trí vị trí tương đối so với nhau.
+		A nằm trên B, C nằm bên trái A
+	ContraitLayout: Layout có ràng buộc vị trí (không ràng buộc sẽ báo lỗi)
+	FrameLayout: gióng theo góc trái trên
+	TableLayout: Bố trí dạng bảng
+	GridLayout: Bố trí dạng lưới
+	
+Chú ý: 
+	Các layout có thể lồng nhau
+	Hay dùng nhất là ContraintLayout, LinearLayout
+3.Scrollview: view cho phép cuộn màn hình trong trường hợp không hiển thị hết dữ liệu
+4. Sự kiện:
+	Có 2 cách: - tạo sự kiện trong file XML
+		   - sử dụng hàm setOnclickListener	
+5. Đon vị đo: dp, sp (đơn vị tương đối) px(đơn vị tuyệt đối)
+6. ID: @+id/ten
+------
+Demo:
+ContraintLayout:
+	- Kéo thả -> gióng ngang -> gióng dọc -> kéo về vị trí mong muốn
+LinearLayout: code
+GridLayout:   
+	app:layout_column="0" : nam o cot nao
+        app:layout_row="2": nam o hang nao
+	app:layout_columnSpan="2": chiem bao nhieu cot
+	app:layout_rowSpan="2": chiem may dong
+
+------------------------------------------------------------------------------------
+Bài 2: Các UI
+*Layout: LinearLayout, RelativeLayout,ContraintLayout,....
+*Widget~view, ví dụ: EditText, TextView, Button,,..... (control)
+Liên kết file XML, và file java: findByViewId
+* lấy chuỗi: txt.getText();
+* thiết lập chuỗi: txt.setText("gia tri");
+* sử dụng ảnh trong button: android:drawableleft
+* xử lý sự kiện:
+	- Tạo hàm trong file xml
+	- setOnClickListener
+	- Sử dụng interface
+* EditText: inputType: xác định kiểu nhập liêu (password, number)
+* ImageView: setImageResource: đưa hình ảnh lên listview
+* checkbox: chọn sở thích
+* radio button: giới tính, quốc gia
+* tooglebutton: on, off(công tắc)
+* hàm isChecked: xác định radio, checkbox đã được check chưa
+* hàm setChecked: thiết lập trạng thái
+------------------------------------------------------------------------------------------
+Bài 3 - Sử dụng Adapter
+1. ArrayAdapter: adapter mảng dữ liệu
+- co 3 tham so (context, layout, data)
+2. SimpleAdapter
+cac tham so (context,listdata,view,from,to)
+trong đó: 
+	View: cần tự định nghĩa view dạng item
+	from: là các key
+	to: là các id thành phần trong itemView
+3.BaseAdapter: adapter chứa list các đối tượng
+	1. dinh nghia item_view
+	2. Goi view
+		neu da ton tai -> goi luon view
+		neu chua ton tai -> tao 1 view moi -> view nay gan voi lop trong java
+	3. gan du lieu cho view
+
+----------------------------------------------------------------------
+Bài 4: Menu
+- Cho phép người dùng tương tác với các chức năng con của ứng dụng.
+- Cách xây dựng:
+B1: Thiết kế menu dạng XML
+B2: Goi menu bằng code java
+	- onCreateOptionsMenu (tao menu
+	- Xy ly su kien (onOptionsItemSelected)
+1. Main menu (Option Menu)
+2. Context menu (menu ngu canh)
+	B1- Tao menu XML
+	B2- registerForContextMenu(listView);//dang ky contextmenu cho listview
+	B3: Tao contextmenu
+		onCreateContextMenu
+		//lien ket menu XML vao code java
+		getMenuInflater().inflate(R.menu.menu_context402,menu);
+	B4: Xu ly su kien: onContextItemSelected
+3.Popup menu
+	B1: Thiết kế menu dạng XML
+	B2: Goi menu bằng code java
+		//1. Dang ky
+		//2. lay menu XML dua vao code Java
+		//3. Render menu
+		//4. hien thi menu
+		//5. xu ly su kien
+Chú ý: Khác nhau giữa context menu và popup menu:
+	Context: hiển thị ở this
+	popup: hiển thị ở đối tượng được chỉ định sẵn
+4. Toolbar: đi đến chức năng thông qua icon
+5. Su dung bottom navigation (thực hiện đầu tiên-> nen tao du moi va nav dau tien)-> hỗ trợ sẵn
+
+Menu: Option +Popup+context -> 
+Toolbar: (android studio hỗ trợ tự đông, chú ý phải tạo từ đầu dự án)
+------------------------------------------------------------------------------------------
+Bài 5: 
+1.TimePicker: Cho phép chọn thời gian (TimePick, DatePicker)
+	Chọn, lấy được thời gian 
+2.Progress: Thanh tiến trình (kiểm soát,theo dõi thời gian hoàn thành 1 tác vụ)
+	ví dụ: Download 0%--------------------------------100%
+3. Alert (thông báo dạng popup) nhằm tương tác với người dùng
+	3.1 Dạng thông báo
+	3.2 Radio button
+	3.3 listview
+	4.4 checkbox
+Chú ý: Bar (thanh tiến trình); dialog là form popup hiển thị cho người dùng tương tác
+----------
+Bài 6 - fragment (phân đoạn)
+- Là 1 thành phần giống như Activity (chứa các control khác)
+- nhưng không chạy độc lập
+- Nằm trong activity
+=> 1 Activity có thể chứa 1 hoặc nhiều fragment
+=> Mục đích: để xử lý linh hoạt
+Demo1: Truyền dữ liệu trong fragment
+- Tạo fragment: BlankFragment
+- Xóa hết các hàm, chỉ để lại: BlankFragmentl61, onCreateView
+Demo2: load fragment
+B1 - Tao 2 fragment va 1 activity
+Demo3 - Kết hợp Fragment - ViewPager - TabLayout
+ViewPager : 
+	- hiển thị View dạng Trang (mỗi view là 1 trang)
+	- Dùng cơ chế trượt từ trái-> phải hoặc ngược lại
+TablLayout: Layout dạng Tab
+
+Activity -> 3 tablayout -> 3 fragment
+ViewPager: hỗ trợ trượt
+Adapter: điều phối các Tab
+------------------------------------------------------------
+Bài 7 - Các layout khác
+1. Snackbar: - Giống Toast.makeText; khác: Có thể đưa các thông tin khác vào, hiển thị ở phần Bottom
+2. TextInputLayout: cho phép nhập liệu như EditText, nhưng có thể đưa ra các thông báo lỗi tự động; dùng để Validate
+3. Percent layout (dễ, ít dùng): Chia phần trăm không gian tĩnh
+4. BottomNavigation: điều hướng bằng menu ở dưới (bottom)
+5. FloatingActionButton (button động)
+------------------------------------------------------------------------------------------------------
+Bài 8 - Recyclerview
+Giống listview, sử dụng tốn ít bộ nhớ
+Vì: 
+- nó tạo 1 khung dữ liệu (thay vì tạo nhiều khung (block) dữ liệu)
+- dữ liệu load lên và đưa vào khung dữ liệu FIFO (không load thành block như listview)
+=>Dùng listview khi có ít dữ liệu nguồn
+=>Dùng Recyclerview khi nguồn dữ liệu lớn
+Cardview = Hinh ảnh + Text
+---
+Demo Recyclerview
+B1 - Tao ItemView (XML)
+B2- Tao class Model link voi ItemView
+B3 - Tao Adapter
+B4 - ĐỊnh nghĩa lớp ViewHolder liên kết với ItemView
+B5 - Tạo view (createViewHolder) + gắn dữ liệu trong adapter(onBindViewHolder)
+B6- Goi Recyclerview trong mainactivity
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
